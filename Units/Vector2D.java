@@ -11,4 +11,8 @@ public class Vector2D {
         if (pos.y == y && pos.x ==x) return true;
         return false;
     }
+
+    public float getDistance(Vector2D position) {
+        return (float) Math.sqrt((x - position.x) * (x - position.x) + (y - position.y) * (y - position.y));
+    }
 }

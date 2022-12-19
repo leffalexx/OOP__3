@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class BaseHero implements BaseInterface {
-    protected int offence;
-    protected int defence;
+    protected int offense;
+    protected int defense;
     protected int hp;
     protected int maxHP;
     protected int speed;
@@ -17,9 +17,9 @@ public abstract class BaseHero implements BaseInterface {
 
     
 
-    public BaseHero(int offence, int defence, int hp, int speed, int[] damage, String name, States state) {
-        this.offence = offence;
-        this.defence = defence;
+    public BaseHero(int offense, int defense, int hp, int speed, int[] damage, String name, States state) {
+        this.offense = offense;
+        this.defense = defense;
         this.hp = hp;
         this.maxHP = hp;
         this.speed = speed;
@@ -61,12 +61,16 @@ public abstract class BaseHero implements BaseInterface {
         return name;
     }
 
+    public void setState(States state){
+        this.state = state;
+    }
+
     @Override
 
     public String getInfo() {
         return getClass().getSimpleName() + 
-        ": Offence: " + offence +
-        ", Defence: " + defence +
+        ": offense: " + offense +
+        ", defense: " + defense +
         ", Damage: " + Arrays.toString(damage) +
         ", HP: " + hp +
         ", Speed: " + speed; 
@@ -75,5 +79,24 @@ public abstract class BaseHero implements BaseInterface {
     @Override
     public void step(ArrayList<BaseHero> group){
 
+    }
+
+    protected void attack (BaseHero unit) {
+        if (offense == unit.defense && speed < position.getDistance(unit.getPosition()))
+            unit.hp -=(damage[0]+damage[1])/4;
+        if (offense == unit.defense)
+            unit.hp -= (damage[0] + damage[1])/2;
+        if (offense > unit.defense && speed < position.getDistance(unit.getPosition()))
+            unit.hp -= damage[1]/2;
+        if (offense > unit.defense)
+            unit.hp -= damage[1];
+        if (offense < unit.defense && speed < position.getDistance(unit.getPosition()))
+            unit.hp -= damage[0]/2;
+        else unit.hp -= damage[0];
+
+        if (unit.hp < 1) {
+            unit.hp = 0;
+            unit.setState(States.KIA);
+        }
     }
 }

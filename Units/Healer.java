@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public abstract class Healer extends BaseHero{
     boolean magic;
 
-    public Healer (int offence, int defence, int hp, int speed, int[] damage, String name, States state) {
-        super(offence, defence, hp, speed, damage, name, state);
+    public Healer (int offense, int defense, int hp, int speed, int[] damage, String name, States state) {
+        super(offense, defense, hp, speed, damage, name, state);
         this.magic = true;
     }
 
