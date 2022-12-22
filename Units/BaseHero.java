@@ -65,6 +65,10 @@ public abstract class BaseHero implements BaseInterface {
         this.state = state;
     }
 
+    public void setPos (Vector2D position) {
+        this.position = position;
+    }
+
     @Override
 
     public String getInfo() {
