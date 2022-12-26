@@ -12,11 +12,6 @@ public class Rogue extends Melee {
     }
 
     @Override
-    public void step(ArrayList<BaseHero> group) {
-
-    }
-
-    @Override
     public String getInfo() {
         return super.getInfo() +
         ", delivery: " + delivery;

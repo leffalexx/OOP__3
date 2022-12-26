@@ -11,11 +11,7 @@ public class Pikeman extends Melee {
         super.position = new Vector2D(x, y);
     }
     
-    @Override
-    public void step(ArrayList<BaseHero> group) {
-
-    }
-
+ 
     @Override
     public String getInfo() {
         return super.getInfo() +

@@ -40,8 +40,6 @@ public abstract class Melee extends BaseHero {
         if (engage.getPosition().x < x && checkPos(new Vector2D(x-1, y)) && (x-1 >= 0))
             setPos(new Vector2D(x-1, y));
         
-
-
     }
 
     private boolean checkPos (Vector2D position) {
